@@ -37,21 +37,21 @@ function animate(options) {
   requestAnimationFrame(function animate(time) {
 
     let timeFraction = (time - start) / options.duration;
-    if (timeFraction > 25) {timeFraction = 25;}
+    if (timeFraction > 50) {timeFraction = 50;}
 
-    let progress = formingTiming(1.5, timeFraction);
+    let progress = formingTiming(timeFraction);
 
     options.draw(progress);
 
-    if (timeFraction < 25) {
+    if (timeFraction < 50) {
       requestAnimationFrame(animate);
     }
 
   });
 }
 
-function formingTiming(x, timeFraction) { //функция расчёта времени
-  return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - 8*x);
+function formingTiming(timeFraction) { //функция расчёта времени
+  return Math.pow(timeFraction, 2)
 }
 
 function bounce(timeFraction) { //функция расчёта времени
@@ -67,10 +67,10 @@ function show() { {
 
     animate({
       duration: 200,
-      timing: formingTiming(1.5, bounce),
+      timing: formingTiming(bounce),
       draw(progress) {
-        if(progress < 25) {callingUs.style.top = progress + "%";}
-        else {callingUs.style.top = 25 + "%";}
+        if(progress < 75) {callingUs.style.top = progress-50 + "%";}
+        else {callingUs.style.top = 75-50+ "%";}
       }
     });
   };

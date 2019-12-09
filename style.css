@@ -717,7 +717,7 @@ a.popup-with-form {
 .popupAgr {
     display: none;
     position: absolute;
-    top: 25%;
+    top: -50%;
     left: 50%;
     text-align: center;
     background: #FFF;
